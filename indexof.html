@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,8,3,4,5,6,7,8];
+        for(var i = 0; i< arr.length; i++){// indexof()
+            if(arr[i] == 8){
+                console.log(i);
+            }
+        }
+        console.log(arr.indexOf(8));
+        for(var i = arr.length; i>= 0; i--){// lastIndexOf()
+            if(arr[i] == 8){
+                console.log(i);
+            }
+        }
+        console.log(arr.lastIndexOf(8));
+    </script>
+</body>
+</html>
