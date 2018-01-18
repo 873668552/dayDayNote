@@ -1,0 +1,24 @@
+js异步：
+1 js先执行同步任务，然后执行异步任务。
+2 js只有一个线程，js的异步是模拟异步的。
+上例子：
+我相信这个东西，几乎都用烂了.
+但是对于setTimeout和setInterval是异步可能有些小伙伴不同了解，
+下面说说为什么说setTimeout是异步的。
+setTimeout(function(){
+　　console.log(0);
+},0)
+ 
+console.log(1);
+ 
+// 1     先执行同步任务console.log(1)
+ 
+// 0     执行完后再执行console.log(0)
+
+但是setTimeout有些小小的问题，就是时间不精确，
+你想更快的执行这段代码我们可以使用html5提供的一个函数。
+requestAnimationFrame(function(){
+　　console.log(document.getElementByTagName('body')[0]);
+})
+requestAnimationFrame和setTimeout的区别就在于requestAnimationFrame比setTimeout更快执行，
+因此很多人用requestAnimationFrame来制作动画。
