@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 布局 -->
+    <input type="text" id="inpHang">
+    <input type="text" id="inpLie">
+    <input type="button" name="" id="inpBtn" value="创建">
+
+    <script>
+
+        var first = false;
+
+        inpBtn.onclick = function () {
+            // 1 碎片
+            console.log(first);
+            if(first){
+                document.body.removeChild(document.body.getElementsByClassName('firstTable')[0]);
+            }
+            first = true;
+            var tar = document.createDocumentFragment();
+            // 2 表格
+            var table = document.createElement('table');
+            table.className = 'firstTable'
+            table.setAttribute("cellspacing", 0);
+            table.setAttribute("cellpadding", 0);
+            tar.appendChild(table);
+
+            var hang = inpHang.value;
+            var lie = inpLie.value;
+            for (var i = 0; i < hang; i++) {
+
+                var tr = document.createElement('tr');
+                table.appendChild(tr);
+                for (var j = 0; j < lie; j++) {
+
+                    var td = document.createElement('td');
+                    td.style.height = '20px';
+                    td.style.width = '50px';
+                    td.style.background = getBG();
+                    if (j == lie - 1) {
+                        td.style.background = '';
+                        td.innerText = '删除';
+                        td.style.border = '1px solid gray';
+                        td.onclick = function() {
+                            this.parentNode.style.display = 'none';
+                        }
+                    }
+                    tr.appendChild(td);
+                }
+
+            }
+            document.body.appendChild(tar);
+        }
+        ///
+        function getBG() {
+            var r = parseInt(Math.random() * 255);
+            var g = parseInt(Math.random() * 255);
+            var b = parseInt(Math.random() * 255);
+            return 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+    </script>
+</body>
+
+</html>
