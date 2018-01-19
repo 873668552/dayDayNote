@@ -1,0 +1,76 @@
+DOM
+（1）属性设置:
+属性set：Div1.setAttribute(“title”, “bbb”)
+return undefined
+<div id='Div1' title = 'bbb'></div>
+属性get：Div1.div1.getAttribute('title');
+上边的设置会在行间显示属性(<>里面显示设置的属性)
+如果值为数组[1,2,3],则显示toString()后的结果 '1,2,3'
+
+属性设置.语法
+Div1.DD = 'dd';(等价于Div1['DD'])
+return '[1,2,3]'
+上边的设置不会在行间显示属性
+如果值为数组[1,2,3],则显示JSON.stringify()后的结果 '[1,2,3]'
+
+Div1.attribute('jj') = [1,2,3]
+return '[1,2,3]'
+只能用下面取值
+Div1.attribute('jj')
+上边的设置不会在行间显示属性
+如果值为数组[1,2,3],则显示JSON.stringify()后的结果 '[1,2,3]'
+综上所述：Div1中有多个属性存放处，不同的存放处对Div1的影响是不一样的。
+小小其他补充：obj.123="abc";这样不符合明明规范，会在编译器编译编译时被认为是错误的。
+js的对象的属性说到底就是字符串为键的字典，只是点操作符后面要求是符合变量名的命名规范；
+
+
+(2)DOM节点信息包括节点类型（nodeType）、节点名称（nodeName）和节点值（nodeValue）。
+
+<div id="div1">我是节点</div>
+<script>
+// nodeType 节点类型（节点类型共有12种）
+console.log( div1.nodeType );		// 1指元素节点
+console.log( div1.attributes[0].nodeType );	// 2指属性节点
+console.log( div1.firstChild.nodeType );	// 3指文本节点
+// nodeName 节点名称
+console.log( div1.nodeName );		// DIV
+console.log( div1.attributes[0].nodeName );	// id
+console.log( div1.firstChild.nodeName );	// #text
+// nodeValue 节点值
+console.log( div1.nodeValue );		// null
+console.log( div1.attributes[0].nodeValue );	// div1
+console.log( div1.firstChild.nodeValue );	// 我是节点
+</script>
+
+childNodes 获得元素的所有子节点（含文本节点）
+语法：
+	div1.childNodes	// 获取div1元素内所有子节点（如果子节点与子节点间有换行，即多出一个文本节点）
+children 获得元素的所有子节点（不含文本节点）
+语法：
+	div1.children	//获取div1元素内所有子节点（不含文本节点）
+创建文本节点：
+	var text = document.createTextNode("文本内容");
+	div1.appendChild(text);
+插入节点：
+	box.insertBefore(newNode, existNode)	;	// 把 newNode 节点插入到 exsitNode 的前面
+
+(3)减少回流和重绘
+方案：可以创建一个虚拟的 DOM 节点
+原理：
+频繁的操作 DOM 将对性能产生极大的影响，所以为了提高性能、优化程序，我们在对 DOM 进行操作时，应使用文档碎片功能，将频繁的 DOM 操作合并，最终仅真实的对 DOM 执行1次操作。
+document.createDocumentFragment 可以创建一个虚拟的 DOM 节点，对该虚拟节点的操作，并不会影响到页面真实的 DOM。
+回流：对 DOM 操作，如果该操作造成页面中其他元素的布局的重新排版，则为回流。
+	例如 elem.fontSize = “100px”; 因为改变字体时，会造成其他元素的布局，所以要进行回流。
+	回流完成后，会自动进行重绘。
+重绘：对 DOM 操作，如果该操作没有造成对页面中其他元素的布局的重新排版，则为重绘。
+	例如 elem.color = “red”; 因为改变颜色时，不会对其他元素的布局造成影响，所以为重绘。
+重绘和回流会大量的消耗资源，所以减少重绘和回流，是我们应该做的，文档碎片就是一种解决方案。
+
+步骤：
+var tmp = document.createDocumentFragment();	// 创建虚拟节点
+for(var i=0; i<10; i++){
+	var li = document.createElement("li");
+	li.innerHTML = i;
+	tmp.appendChild(li);	// 将li标签放入虚拟节点里
+}
+div1.appendChild(tmp);	// 将虚拟节点添加到页面上
