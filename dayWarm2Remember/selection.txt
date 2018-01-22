@@ -20,6 +20,68 @@ document.onmousedown = function(e){[M *6
 解决方案：（filter）
 var e = event||window.event;
 
+(1) 
+clientX、clientY
+在可视区域的位置，也就是浏览器坐标。
+鼠标在可视区域内的坐标
+
+document.onmousemove = function(event){
+	event = event || window.event;
+	document.title = event.clientX +", "+ event.clientY;
+} 
+
+(2)
+offsetX、offsetY
+相对于事件源对象的偏移量,也就是元素坐标，相对坐标。
+鼠标在某个对象上时，鼠标与该对象的左上角的间距坐标。
+
+div1.onmousemove = function(event){
+	event = event || window.event;
+	document.title = event.offsetX +", "+ event.offsetY;
+} 
+
+(3)
+pageX、pageY
+鼠标在整个页面上的坐标，计算滚动条距离。
+
+document.onmousemove = function(event){
+	event = event || window.event;
+	document.title = event.pageX +", "+ event.pageY;
+} 
+
+(4)
+screenX、screenY
+整个屏幕坐标，鼠标与当前电脑屏幕的间距。
+
+document.onmousemove = function(event){
+	event = event || window.event;
+	document.title = event.screenX +", "+ event.screenY;
+} 
+
+(5)
+键盘事件（keyup、keydown、keypress）
+
+1. onkeyup和onkeydown时，keyCode是不区分大小写的，会将小写字母自动转化为大写字母。
+2. onkeypress时，区分大小写。
+3. 兼容 event.keyCode || event.which
+
+document.onkeypress = function(event){
+	event = event || window.event;
+	//返回onkeypress事件触发的键的值的字符代码，或者 onkeydown 或 onkeyup 事件的键的代码。
+	var code = event.keyCode || event.which;
+	document.title = code+", "+String.fromCharCode(code);
+}
+
+(6)
+事件从子节点向上依次传递给父节点的现象，叫做事件冒泡。
+阻止事件冒泡的方法：
+	event.stopPropagation();	// W3C规范写法
+
+	event.cancelBubble=true;	// IE写法 （虽然是IE方法，但好多其他厂商浏览器也支持）
+
+
+
+
 parentNode跟parentElement除了前者是w3c标准，后者只ie支持
 
 当父节点的nodeType不是1，即不是element节点的话，它的parentElement就会是null
@@ -27,3 +89,5 @@ parentNode跟parentElement除了前者是w3c标准，后者只ie支持
 一般情况parentNode可以取代parentElement的所有功能
 
 parentElement匹配的是parent为element的情况，而parentNode匹配的则是parent为node的情况。element是包含在node里的，它的nodeType是1
+
+element.innerHTML = 相当于把element中的元素删除掉了
