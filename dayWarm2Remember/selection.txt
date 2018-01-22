@@ -1,0 +1,29 @@
+用for创建组件的时候，控件事件的绑定用this指向控件，不要用循环中的变量找控件。
+原因：如 for(var i = 0; i < 3; i++)
+	{
+		btn[i].onclick = function(){
+			btn[i].value = i;
+		}
+	}
+	第一个btn[i] 和 函数里面的btn[i] 指向的不是同一个控件.第二个指向的是btn[2].
+	函数的执行是在所有的js块中的代码都执行完之后，才去执行的。
+
+
+1月22日
+event事件学习
+
+document.onmousedown = function(e){[M *6
+	console.log(e);
+}
+函数的的第一个参数，就是事件。事件中记录了事件的细节。
+兼容问题：IE8 以及之下的浏览器不兼容。
+解决方案：（filter）
+var e = event||window.event;
+
+parentNode跟parentElement除了前者是w3c标准，后者只ie支持
+
+当父节点的nodeType不是1，即不是element节点的话，它的parentElement就会是null
+
+一般情况parentNode可以取代parentElement的所有功能
+
+parentElement匹配的是parent为element的情况，而parentNode匹配的则是parent为node的情况。element是包含在node里的，它的nodeType是1
