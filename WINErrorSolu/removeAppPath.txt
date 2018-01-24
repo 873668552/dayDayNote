@@ -1,0 +1,7 @@
+以Google Chrome浏览器为例子，讲述window下的应用程序安装目录移动。
+1 找到Goole Chrome安装路径。（右键点击浏览器图标，‘打开文件位置') 
+赋值路径.如：C:\Program Files (x86)\Google
+2 将Google整个文件赋值到你要安装的那个磁盘.如：E:\Mozilla Firefox.
+3 删去默认安装路径下的整个Google文件夹。若删去时出现警告，即此文件夹在另一程序中打开，无法删去，此时可打开任务管理器，选择“进程”项，把于Google有关的进程都关闭。本人需要关的都是与Google Update有关项.
+4 打开“cmd”，然后输入mklink /d "C:\Program Files\Google" "E:\Google"（前面引号表示默认安装的位置，后面引号表示移动后的位置，且两个引号之间有空格）.
+5 回车键后，出现如下结果:" 为 C:\Program Files (x86)\Google <<===>> E:\Google 创建的符号链接，"   说明移动成功. 
