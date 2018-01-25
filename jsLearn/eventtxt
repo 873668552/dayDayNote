@@ -1,0 +1,17 @@
+浏览器中有很多默认行为会影响我们的程序。所以我们要阻止默认行为。
+return false就是默认行为的解决方案.
+如：阻止超链接<a href = 'www.baidu.com' id = 'a1'>baidu</a>
+	      <script>a1.onclick = function(){return false} </script>
+
+备注：event.preventDefault();也可以阻止，但是有兼容问题（IE）
+阻止超链接经常用在删除数据时的安全提醒上，return confirm("确定删除该数据吗？");
+
+(1) 阻止浏览器右键菜单。doucment.oncontextmenu=function(){return false}
+阻止文字被选中：document.onmousedown = function(){return false}
+阻止粘贴，复制，剪切<input type ='text' onpaste = 'return false' oncopy = 'return false' oncut = 'return false'>
+阻止表单提交,重置<form onsubmit = 'return false' onreset = 'return false'>
+
+
+1 btn1.addEventListener('click',fn1,false);冒泡事件的添加
+btn1.removeEventListener('click',fn2,false)移除监听事件
+
