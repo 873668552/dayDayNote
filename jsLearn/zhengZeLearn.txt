@@ -1,0 +1,65 @@
+js 中 正则常用的方法有：
+
+1 test()方法检测字符串中指定的值。返回值true或者false
+如： /a/.test('abc')；true
+2 exec()检索字符串中指定的值。有返回这个值。没有返回null
+如：/a/.exec('abc'); ['a']
+exec方法每次只能取出一个匹配的值
+var reg = /a/gi;
+reg.exec("aA");	// ["a"]
+reg.exec("aA");	// ["A"]
+reg.exec("aA");	// null
+reg.exec("aA");	// ["a"]
+
+
+字符串对象下的正则使用：
+
+1 match（）方法在字符串中检测制定的值，
+如：'abcdf'.match(/a/);返回 'a'
+2 search() 检索指定子字符串在字符串中的位置的下标（首个字母的下标）。
+如：'abcdef'.search(/ab/);返回0
+3 split()分割字符串
+如：'abcdbac'.split(/b/);返回['a','cd','ac'];
+4 replace()替换字符串
+如：'abc'.replace(/a/,'x');返回'axb'
+
+方口号：
+[abc]查找括号之间任意的字符.
+'bbbnnn'.match(/[nmjk]/); 返回 ['n']
+[^abc]查找不包含方括号中的字符
+'abcde'.match(/[^abc]/) 返回['d']
+[0-9] 查找从0到9的数字。
+'123456'.match(/[0-9]/) 返回 ['1']；
+(qq|123)查找任何指定的选项。
+'adssfd@qq.com'.match(/@(qq|126)/) 返回：['@qq','qq']
+. 查找单个字符，除了换行和行位结束符。
+' aaa a'.match(/./) 返回：[' ']
+\w 查找单词字符，包括英文，数字，下划线
+'我是'.match(/\w/);返回 null. 'abc'.match(/\w/)返回：'a';
+\W 查找非单词字符
+'我是'.match(/\W/)'我'; 'a'.match(/\W/);返回：null;
+\d 查找数字
+'123'.match(/\d/);返回 1
+\D查找非数字
+’123'.match(/\D/);返回：null
+\b 匹配单词边界。包括头尾、空白字符。
+'zzzz 1 '.match(/\b./g) 返回：['z',' ','1',' ']
+\B 匹配非单词边界 
+'z 1 '.match(/\B\w/g) 返回：null
+n+ 匹配至少一个n的字符串
+'ababababababa'.match(/ab+/) 返回：'ab'; 'abacaba'.match(/ab+a/)返回：'aba';
+n{x} 返回包含x个n的字符串
+'aaaaa'.match(/a{2}/g) ['aa','aa']
+n{x,y}返回x至y个n的字符串
+'aaaaaa'.match(/a{3}/);返回 'aaa'
+n{x,}返回至少x个n的字符串
+'aaa'.match(/a{1,}/)返回：'aaa'; 'aaa'.match(/a{6,}/) 返回 null
+n$ 返回末尾为n的字符串[M FE
+'aaannn'.match(/n$/) 返回：n
+^n 返回开头为n的字符串
+'abcdef'.match(/^a/)返回 'a'
+?=n 匹配任何其后紧跟制定字符n的字符串
+'abc'.match(/a(?=b)/)返回 'a'
+?!n 匹配任何其后不是n的字符串
+'abc'.match(/a(?!b)/)；返回 null
+
