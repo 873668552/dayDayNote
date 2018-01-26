@@ -1,0 +1,15 @@
+1 建立记事本文件。
+2 粘贴
+@echo off 
+taskkill /f /im explorer.exe
+CD /d %userprofile%\AppData\Local
+DEL IconCache.db /
+astart explorer.exeecho
+3 另存为repairIcon.bat，并且运行repairIcon.bat 
+
+最后解释一下：
+@echo off 为打开cmd
+taskkill /f /im explorer.exe 为关闭可视化资源管理进程(Windows程序管理器)。
+CD /d %userprofile%\AppData\Local 技术有限只知道个大概：进入注册表，找到AppData\Local的键
+Del IconCache.db/a 删除 IconCache.db/a 
+astart explorer.exeecho 新建explorer.exe进程，并且启动。
