@@ -1,0 +1,28 @@
+JS对象 和JSON对象
+
+不同点： JSON对象没有 1函数 2NAN 3undefined
+
+
+var obj = {	// js对象
+	str : "abc",
+	i : 10,
+	n : NaN,
+	b : true,
+	u : undefined,
+	nul : null,
+	arr : [1,2],
+	o : {a:1},
+	fn : function(){alert()}
+}
+
+
+var obj = {	// json对象
+	str : "abc",
+	i : 10,
+	
+	b : true,
+	
+	nul : null,
+	arr : [1,2],
+	o : {a:1}
+}
