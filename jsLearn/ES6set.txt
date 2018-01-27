@@ -1,0 +1,37 @@
+ES6 set 
+1. 具有数组的特性，
+2，和数组的区别：里边的元素不能重复。
+3，支持this指向。简单的说就是支持函数的更换。
+
+const setObj = new Set();
+
+//增
+setObj.add(1);
+setObj.add(2);
+
+//删一个指定元素
+setObj.delete(1);
+//删除所有元素
+setObj.clear();
+
+//判断setObj的大小
+var size = setObj.size;
+
+//判断某一个元素是不是在set集合中
+var flag = setObj(2);
+
+//转化为数组
+var arr = Array.from(setObj);
+
+//改变this指向
+let obj = {
+    fn:function(val,key){
+    	console.log(val,key);
+    }
+ }
+setObj.forEach(function(value,key,arr){
+	//把window该为obj	
+	this.fn(value,key);
+},obj)
+
+
