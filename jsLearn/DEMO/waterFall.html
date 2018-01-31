@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 资源
+        var divs = [];
+        var divH = [];
+        var n = parseInt(document.body.clientWidth/100);
+
+        for (var i = 0; i < 50; i++) {
+           divs.push( createDiv() );
+        }
+        for(var i = 0; i < n; i++){
+            divs[i].style.left = i * 100 + 'px';
+            divs[i].style.top = '0px';
+            document.body.appendChild(divs[i]);
+            divH.push(divs[i]);
+        }
+
+        // 2 逻辑
+        for(var i = n,len = divs.length; i < len; i++ ){
+            
+            var minDiv = divH[getMin()];
+            var currentDiv = divs[i];
+
+            var y = (minDiv.offsetHeight + minDiv.offsetTop) + 'px';
+            var x = minDiv.style.left;
+            
+            currentDiv.style.top = y;
+            currentDiv.style.left = x;
+            document.body.appendChild(currentDiv);
+            // 替换
+            divH[getMin()] = currentDiv;
+        }
+        // 功能函数
+        
+        function createDiv() {
+            var div = document.createElement('div');
+            div.style.position = 'absolute';
+            div.style.height = parseInt(Math.random() * 100 + 50) + 'px';
+            div.style.width = 100 + 'px';
+            div.style.background = getColor();
+            return div;
+        }
+        //找到目标
+        function getMin(){
+            var min = divH[0];
+            var index = 0;
+            for(var i = 1; i< n; i++){
+                var tar = divH[i]
+                if(min.offsetHeight + min.offsetTop  > tar.offsetHeight +tar.offsetTop){
+                    min = tar;
+                    index = i;
+                }
+            }
+
+            return index;
+        }
+        function getColor() {
+            return 'rgb(' + parseInt(Math.random() * 256) + ',' + parseInt(Math.random() * 256) + ',' + parseInt(Math.random() * 256) + ')';
+        }
+    </script>
+</body>
+
+</html>
