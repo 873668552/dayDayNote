@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{list-style: none; padding: 0;}
+        .faDiv{
+            width: 0px;
+            height: 200px;
+            background: blue;
+            transform-style: preserve-3d;
+            position: fixed;
+            left: 0; right: 0; bottom: 0; top: 0;
+            margin: 200px auto auto auto;
+           transform: rotateX(20deg) rotateY(-10deg);
+        }
+        .faDiv>li{
+            width: 200px; height: 200px; position: absolute;
+            /* transform-origin: 0 0 -500px; */
+        }
+        .faDiv>li:nth-of-type(1){
+            background: pink; transform:rotateY(120deg) translateZ(500px);
+        }
+        .faDiv>li:nth-of-type(2){
+            background: orange; transform:rotateY(240deg) translateZ(500px);
+        }
+        .faDiv>li:nth-of-type(3){
+            background: black; transform:rotateY(360deg) translateZ(500px);
+        }
+    </style>
+</head>
+<body>
+    <div class="faDiv">
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+
+    <!-- js -->
+        <script>
+            // 1
+            var faDiv = document.querySelector('.faDiv');
+            // 2
+            var count = -10;
+            var timer = setInterval(()=>{
+                count += 10;
+                faDiv.style.transform = 'rotateY('+count + 'deg' +')';
+            },100);
+        </script>
+</body>
+</html>
