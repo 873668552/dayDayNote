@@ -1,0 +1,24 @@
+ES6 Map
+
+1 类型是object
+
+JavaScript 的对象（Object），本质上是键值对的集合（Hash 结构），但是传统上只能用字符串当作键。
+这给它的使用带来了很大的限制。
+
+Map 的键更加灵活.
+Map类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
+也就是说，Object 结构提供了“字符串—值”的对应，Map结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。
+如果你需要“键值对”的数据结构，Map 比 Object 更合适.
+
+        const s = new Set();
+	// 将数组中的每个元素，通过add方法，添加到set结构中
+	[2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
+	// 
+	console.log(Array.from(s));
+	console.log(s.size);	// 获取长度
+	console.log(s.has(3));	// 是否存在元素3
+	console.log(s.delete(2));// 删除元素2，如果删除成功，则返回真
+	console.log(Array.from(s));
+	//s.clear();	// 清除所有元素，无返回值
+	//console.log(Array.from(s));
+

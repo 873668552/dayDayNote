@@ -1,0 +1,9 @@
+1 String.fromCharCode() 把一个整数转换为对应的字符
+如：String.fromCharCode(97) == a
+2 indexOf() 返回某个字符串在另一个字符串中的下标
+如：'abc'.indexOf('a')  == 0
+3 substr() 从第几个字符开始，切割一个长度的字符串
+如： 'abcdef'.substr(1,1) == 'b'
+4 substring() 从第几个字符开始，切割到另一个字符位置，得到这个字符串
+如： 'abcdef'.substring(1,2) == 'b'
+6 startsWith() endWith() includes() 判断含有字符串
