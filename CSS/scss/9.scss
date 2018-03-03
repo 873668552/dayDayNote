@@ -1,0 +1,5 @@
+@each $i in a, b, c, d {
+    .a#{$i}{
+        color:red;
+    }
+}
