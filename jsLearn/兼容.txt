@@ -1,0 +1,130 @@
+//删除空白节点
+function deleteSpace(node){
+	var child = node.childNodes();
+	for(var i = 0; i < child.length;i++){
+		if(child[i].nodeType === 3 && /^\s+$/.test(child[i].nodeValue)){
+			child[i].parentNode.removeChild(child[i]);
+		}
+	}
+	return node;
+}
+//获取内部和行内样式兼容
+function getStyle(obj,attr){
+	return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj,1)[attr];
+} 
+
+
+
+//兼容键盘按键
+function getbutton(evt){
+	var e = evt || window.event;
+	if(evt){
+		return event.button;
+		
+	}else if(window.event){
+		switch(event.button){
+			case 1 : return 0;
+			case 4 : return 1;
+			case 2 : return 2;
+		}
+	}
+}
+//兼容滚动条高度
+document.onscroll = function(){
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+}
+document.scrollTop = function(){
+	var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+}
+
+
+//阻止冒泡兼容
+
+function maoPao(evt){
+	var e = evt || window.event;
+	if(e.stopPropagation){
+		e.stopPropagation();
+	}else{
+		e.cancleBubble = true;//IE 
+	}
+}
+
+
+
+
+//超链接的兼容
+
+function fnHref(evt){
+	var e = evt || window.event;
+	if(e.preventDefault){
+		e.preventDefault();   //标准
+	}else{
+		e.returnValue = false;  //IE
+	}
+}
+
+//监听事件的兼容
+function addEventListener(obj,event,fun,boo){
+	if(obj.addEventListener){
+		obj.addEventListener(event,fun,false);
+	}else{
+		obj.attachEvent("on"+ event,fun);
+	}
+}
+
+//解除监听事件的兼容
+function removeEventListener(obj,event,fun,boo){
+	if(obj.removeEventListener){
+		obj.removeEventListener(event,fun,false);
+	}else{
+		obj.detachEvent("on"+ event,fun);
+	}
+}
+
+//获取className的兼容
+
+function getElementsByClass(className){
+	if(document.getElementsByClassName){
+		document.getElementsByClassName(className);
+	}else{
+		var arr = [];
+		var obj = document.getElementsByTagName("*");//兼容IE低版本
+		for(var i = 0; i < obj.length; i++){
+			if(obj[i].className == className){
+				arr.push(obj[i]);
+			}
+		}
+		return arr;
+	}
+}
+
+//事件源的兼容
+
+var target = evt.target || evt.srcElement;
+
+//年份兼容      （火狐获取的年份要减去1900）
+一般用    
+		getFullYear();获取年份
+		
+		
+		
+		
+//自定义属性问题
+
+IE8及以下版本，可以通过可以使用获取常规属性的方法来获取HTML中的自定义属性；
+标准的浏览器，是不能直接获取自定义属性。
+解决方法：统一通过 getAttribute() 获取自定义属性。?
+
+	getAttribute("属性名");
+
+	
+	
+//使用getAttribute()获取元素class名
+
+getAttribute("class");  //IE7及以下版本不支持该方法，
+	并且在浏览器中的返回值为null，其他浏览器支持该方法；
+getAttribute("className"); // IE7及以下版本支持该方法，其他浏览器不支持
+
+兼容  getAttribute("class") == null ? getAttribute("className"): getAttribute("class");
+
+		
