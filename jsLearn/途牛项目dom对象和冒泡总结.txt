@@ -1,0 +1,13 @@
+offsetTop
+offsetTop 相对父容器内边距
+每一个元素都有offsetTop属性。
+这个属性的值是相对的取值的，
+从父级容器开始，向上找含有position属性为relative或者absolute的第一个容器。相对这个容器的边框取值。
+
+document.body.clientWidth ==>body对象的宽度
+document.body.clientHeight ==>body对象的高度
+document.documentElement.clientWidth ==>可见区域宽度
+document.documentElement.clientHeight ==>可见区域高度
+
+冒泡
+冒泡阻止：事件在传递时候，执行停留在含阻止冒泡的那个层中，不在向下传递事件。
