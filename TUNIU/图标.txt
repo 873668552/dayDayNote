@@ -1,0 +1,5 @@
+1 制造一个16*16的图标。保存的格式为ico。
+2 放在项目中
+3 引用：在title标签下面添加如下标签（href后面是图标的存放的位置）  
+<link rel="icon" href="../img/tuniu.ico" type="image/x-icon"/>  
+ <link rel="shortcut icon" href="../img/tuniu.ico" type="image/x-icon">
