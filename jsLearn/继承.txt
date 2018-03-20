@@ -1,0 +1,9 @@
+call 继承
+相当于把父元素的构造步骤迁移到子元素的环境中执行。
+es6
+class A{
+构造。。。
+}
+class B extends A{
+	constructor(){super();this.y = 2;}
+}
