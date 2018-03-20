@@ -1,0 +1,20 @@
+1 介绍： Javascript 中对象的 prototype 属性的解释是：返回对象类型原型的引用。
+
+fn.prototype.constructor = fn; 
+
+prototype是一个指针，指向一个对象。这个对象的用途是，包含所有实例共享的属性和方法。
+所有通过同一个构造函数创造的实例对象，都有一个指针__proto__指向构造函数原型。
+原型诞生意义就是可以实现代码复用。就是把需要共享的属性方法放到一个对象里，这个对象就是原型（对象）
+
+2 应用
+判断该原型是否属于某对象
+Person.prototype.isPrototypeOf(p1);
+p1 instanceof Person;
+
+delete p1.name; 删除实例中的name
+delete p1.__proto__.name 删除原型上的name
+
+hasOwnProperty 在实例中是否包含该属性，不在原型中查找该属性。
+
+in 判断是否存在某一个属性；'name' in p1。
+
