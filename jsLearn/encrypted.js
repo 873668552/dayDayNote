@@ -20,7 +20,7 @@ function createToken(username){
       }),
     // 2 中间部分
       middle = objToHex({
-        "iss":"huaizhi.com",
+        "iss":"public.com",
         "exp":new Date().getTime() + 100000,
         "name":username
       });
