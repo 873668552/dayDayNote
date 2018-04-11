@@ -1,0 +1,5 @@
+1 先进入 文件->首选项->设置
+
+2 基本设置：
+侧边栏设置：workbench.sideBar.location 设置为true
+tab空格设置: editor.tabSize 
