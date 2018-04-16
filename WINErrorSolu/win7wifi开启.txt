@@ -1,0 +1,5 @@
+1 netsh wlan set hostednetwork mode=allow ssid=4Gtest key=12345678
+2 网络共享中心--更改适配器设置--本地连接--属性--共享--允许其他网络用户通过。。。无线网络连接2
+3 netsh wlan start hostednetwork  
+不行的话，（1）我的电脑--属性-- 设备管理 -- 网络适配器 -- 卸载--  设备管理器
+（2）我的电脑-- 管理 --服务和应用程序--服务--Routing and Remote Access -- 属性 -- 手动
