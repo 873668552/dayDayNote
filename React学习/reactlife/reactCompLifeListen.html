@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../base/react.min.js"></script>
+    <script src="../base/react-dom.min.js"></script>
+    <script src="../base/browser.min.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script type="text/babel">
+    let Father = React.createClass({
+        // render 
+        render(){
+            let {number ,isShow} = this.state;// 解构赋值
+            return(
+                <div>
+                    <button onClick={this.changeNum}>PROPS</button>
+                    <br/>
+                    <button onClick={this.changeShow}>UNMOUNT</button>
+                    <br/>
+                    {
+                        isShow ? <Son name={'son'+number}/> : ''
+                    }
+                </div>
+            )
+        },
+        getInitialState(){
+            return{
+                number:1,
+                isShow:true
+            }
+        },
+        changeNum(){
+            this.setState( state=> {
+                return { number: ++state.number }
+            })
+        },
+        changeShow(){
+            this.setState(state =>{
+                return {isShow:!state.isShow}
+            })
+        }
+    })
+    let Son = React.createClass({
+        // 1
+        getDefaultProps(){
+            getName('1 getDefaultProps','这里设置的只是默认属性，是一个只读属性，实例不能修改的')
+            return{
+                num:1
+            }
+        },
+        // 2
+        getInitialState(){
+            getName('2 getInitialState','给实例设置状态，每一个实例的状态都是独立的')
+            return{
+                num2:1,
+                number:0
+            }
+        },
+        // 3
+        componentWillMount(){
+            getName('3 componentWillMount','修改实例状态，不会触发其他的render钩子函数')
+        },
+        // 4 render 
+        render(){
+            getName('4 render','创建虚拟dom，这里修改数据会进入dead loop')
+            return(
+                <div>
+                    <p>这是子组件</p>
+                    <p>name:{this.props.name}</p>
+                    <p>修改属性次数:{this.state.num2}</p>
+                    <p>改变自身状态次数:{this.state.number}</p>
+                    <br/>
+                    <button onClick={this.change}>改变自己装太</button>
+                </div>
+            )
+        },
+        change(){
+            this.setState( state =>{
+                return{number:++state.number}
+            })
+        },
+        // 5 初始阶段完成
+        componentDidMount(){
+            getName('5 componentDidMound','这里标着这初始化完成，在这里可以访问到真实的dom')
+        },
+        ///// 监测阶段
+        componentWillReceiveProps( props,state ){
+            console.log(props)
+            getName('6 componentWillReceiveProps','这个时候属性还没有修改,更改状态不会触发其他钩子函数')
+            this.setState( state =>{
+                return {
+                    num2: ++state.num2
+                }
+            })
+        },
+        shouldComponentUpdate(props,state){
+            getName('7 shouldComponentUpdate','根据属性条件可以决定更新真实dom与否')
+            // return false;
+            return true;
+        },
+        componentWillUpdate(){
+            getName('8 componentWillUpdate','没有什么乱用')
+        },
+        componentDidUpdate(){
+            getName('9 componentDidUpdate','可以操作更新后的dom')
+        },
+        componentWillUnmount(){
+            getName('10 componentWillUnmount','善后')
+        }
+
+    })
+    function getName(params,str) {
+        console.log(params);
+        console.log(str)
+        console.log('---------------')
+    }
+    ReactDOM.render(<Father/>,app)
+</script>
+</html>
