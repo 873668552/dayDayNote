@@ -1,0 +1,2 @@
+关闭电池计划
+关闭window.update
