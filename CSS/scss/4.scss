@@ -1,0 +1,24 @@
+.a{
+    color:red;
+}
+
+.b{
+    @extend .a;
+    background: blue;
+}
+
+.c{
+    @extend .b;
+    font-size: 20px;
+}
+
+.d1{
+    color: red;
+}
+.d2{
+    background: blue;
+}
+div{
+    @extend .d1;
+    @extend .d2;
+}

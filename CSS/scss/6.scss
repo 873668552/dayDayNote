@@ -1,0 +1,16 @@
+.a{
+    background: black;
+    @if 1==2 {
+        color:red;
+    }@else if 2>1{
+        color:green;
+    }@else{
+        color:blue;
+        padding:10px;
+    }
+}
+
+.b{
+    color: red;
+    color: blue;
+}

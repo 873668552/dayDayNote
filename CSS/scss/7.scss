@@ -1,0 +1,6 @@
+@for $i from 1 to 10 {
+    .a#{$i}{
+        color:red;
+        font-size: $i * 2px;
+    }
+}

@@ -1,0 +1,20 @@
+$a : 10px;
+
+body{
+    background: yellow;
+    div{
+        color:red;
+        >.tmp{
+            color:gray
+        }
+    }
+    >p{
+        color:blue;
+        
+        border:{
+            style: dashed;
+            color:orange;
+            width: $a;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+@mixin a{
+    color: red;
+    background: blue;
+    @include c;
+}
+
+@mixin b{
+    padding:20px;
+}
+@mixin c{
+    margin:30px;
+}
+
+@mixin d( $a, $b:5px ){
+    height: $a+$b;
+}
+
+div{
+    @include a;
+    @include b;
+    font-size: 30px;
+    @include d(30px);
+}

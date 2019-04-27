@@ -1,0 +1,16 @@
+.a, .b, .c {
+  color: red; }
+
+.b, .c {
+  background: blue; }
+
+.c {
+  font-size: 20px; }
+
+.d1, div {
+  color: red; }
+
+.d2, div {
+  background: blue; }
+
+/*# sourceMappingURL=4.css.map */

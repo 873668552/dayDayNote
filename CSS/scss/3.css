@@ -1,0 +1,13 @@
+body {
+  background: yellow; }
+  body div {
+    color: red; }
+    body div > .tmp {
+      color: gray; }
+  body > p {
+    color: blue;
+    border-style: dashed;
+    border-color: orange;
+    border-width: 10px; }
+
+/*# sourceMappingURL=3.css.map */

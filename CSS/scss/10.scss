@@ -1,0 +1,19 @@
+@function a(){
+    @return 10px;
+}
+
+@function b($i){
+    @return $i * 3;
+}
+
+@function c($i, $n:5px){
+    @return $i + $n;
+}
+
+div{
+    font-size: a();
+    width: b(10px);
+    height: c(8);
+}
+
+

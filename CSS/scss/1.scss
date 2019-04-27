@@ -1,0 +1,11 @@
+$a:blue;
+$b:red;
+$c:size;
+$d:font;
+$e:100px;
+
+html{
+    background: $a;
+    color:$b;
+    #{$d}-#{$c}: $e;
+}
