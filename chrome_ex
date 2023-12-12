@@ -1,0 +1,54 @@
+开发环境
+壳子代码仓库地址
+https://bitbucket.org/holidale/m2m-chrome-extension/src/master/
+iframe代码仓库地址
+https://bitbucket.org/holidale/m2m_chrome_extension/src/master/
+插件开发文档
+https://developer.chrome.com/docs/extensions/mv3/intro/
+tailwindcss
+https://tailwindcss.com/docs/adding-custom-styles
+node
+https://www.runoob.com/nodejs/nodejs-install-setup.html
+npm
+https://www.runoob.com/nodejs/nodejs-npm.html
+安装环境
+- 安装环境
+（1）安装node
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install node
+node -v
+  
+（2）安装npm
+npm -v
+壳子
+1. 下载插件壳子代码到本地
+git clone git@bitbucket.org:holidale/m2m-chrome-extension.git
+2. 开发
+（1）核心代码在m2m-chrome-extension/public/side-panel.js 中。开发官方文档
+3. 加载插件壳子
+（1）谷歌浏览器调成开发者模式（ chrome://extensions/ ）
+（2）点击‘加载已压缩的扩展程序’按钮。选择根目录下的public（m2m-chrome-extension/public）。
+（3）固定插件到工具栏中。
+备注：壳子功能修改后，都要重新加载插件壳子。
+
+[Image]
+[Image]
+[Image]
+
+插件嵌套的iframe网站
+1. 下载代码到本地运行
+git clone git@bitbucket.org:holidale/m2m_chrome_extension.git
+npm install
+npm run dev
+2. 在插件中看效果
+（1）修改插件中的iframe地址。然后重新加载插件到谷歌浏览器。（加载插件壳子）
+[Image]
+  
+3. 发布
+本地build。把本地的build文件放在服务器指定位置。
+npm run build
+体验版：
+如：我的本地的build文件 路径在 ‘/Users/linshi1/Desktop/google/chrome_ext_ts/build’，就使用下面命令。
+scp -P20202 -r /Users/linshi1/Desktop/google/chrome_ext_ts/build webuser@45.33.53.104:/opt/webapp/google_ex
+线上版本：
+scp -P20202 -r /Users/linshi1/Desktop/google/chrome_ext_ts/build webuser@66.175.219.60:/opt/webapp/google_ex
